@@ -52,6 +52,7 @@ const navbar = document.getElementById('navbar');
     });
 
     // Voice Navigation
+
     if ('webkitSpeechRecognition' in window) {
       const recognition = new webkitSpeechRecognition();
       recognition.continuous = true;
