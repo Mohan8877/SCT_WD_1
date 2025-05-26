@@ -1,0 +1,178 @@
+:root {
+      --bg-color: linear-gradient(to right, #2c3e50, #4ca1af);
+      --text-color: white;
+      --card-bg: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode {
+      --bg-color: linear-gradient(to right, #000000, #434343);
+      --text-color: #f0f0f0;
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+      animation: fadeIn 1s ease-in;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      transition: background 0.3s, box-shadow 0.3s;
+      z-index: 1000;
+    }
+
+    nav.scrolled {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    nav h1 {
+      font-size: 1.5em;
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 1.1em;
+      position: relative;
+      perspective: 500px;
+      transition: transform 0.3s;
+    }
+
+    .nav-links a:hover {
+      transform: rotateX(10deg) scale(1.1);
+      color: #ffd700;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-links a.active {
+      color: #00ffd5;
+      font-weight: bold;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 100px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #home {
+      background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+      color: #fff;
+      text-shadow: 1px 1px 4px #000;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 40px;
+      right: 30px;
+      padding: 10px 15px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(to right, #36d1dc, #5b86e5);
+      color: white;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: opacity 0.3s;
+      z-index: 1001;
+    }
+
+    #scrollTopBtn:hover {
+      background: linear-gradient(to right, #ff512f, #dd2476);
+    }
+
+    #toggleDark {
+      background: transparent;
+      border: 2px solid #fff;
+      padding: 6px 12px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    /* Animated Cards */
+    .cards {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) rotateY(3deg);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.5);
+    }
